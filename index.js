@@ -8,14 +8,14 @@ function checkAgeValidity() {
     const day = dobDate.getDate();
     let age = today.getFullYear() - dobDate.getFullYear();
 
-    let checkmonth = today.getMonth() < month;
-    let checkday = today.getMonth() === month && today.getDate() < day;
+    const isMonthBefore = today.getMonth() < month;
+    const isMonthEqualButDayBefore = today.getMonth() === month && today.getDate() < day;
 
-    if (checkmonth || checkday) {
+    if (isMonthBefore || isMonthEqualButDayBefore) {
         age--;
     }
 
-    const isValidAge = age > 18 && age < 55;
+    const isValidAge = age >= 18 && age <= 55;
 
     if (!isValidAge) {
         dobElement.setCustomValidity("The age should be between 18 and 55 years");
@@ -24,6 +24,8 @@ function checkAgeValidity() {
         dobElement.setCustomValidity("");
     }
 }
+
+let userform = document.getElementById("user-form");
 
 const EntriesRetrieved = () => {
     let entries = localStorage.getItem("user-entries");
@@ -40,11 +42,11 @@ let userentries = EntriesRetrieved();
 const displayEntries = () => {
     const entries = EntriesRetrieved();
     const tableEntries = entries.map((entry) => {
-        const nameCell = `<td class='border px-4 py-2'>${entry.name}</td>`;
-        const emailCell = `<td class='border px-4 py-2'>${entry.email}</td>`;
-        const passwordCell = `<td class='border px-4 py-2'>${entry.password}</td>`;
-        const dobCell = `<td class='border px-4 py-2'>${entry.dob}</td>`;
-        const acceptTermsCell = `<td class='border px-4 py-2'>${entry.acceptedTermsAndConditions}</td>`;
+        const nameCell = `<td class='border px-4 py-2'>${entry.userName}</td>`;
+        const emailCell = `<td class='border px-4 py-2'>${entry.userEmail}</td>`;
+        const passwordCell = `<td class='border px-4 py-2'>${entry.userPassword}</td>`;
+        const dobCell = `<td class='border px-4 py-2'>${entry.userDob}</td>`;
+        const acceptTermsCell = `<td class='border px-4 py-2'>${entry.acceptTerms}</td>`;
         const row = `<tr>${nameCell} ${emailCell} ${passwordCell} ${dobCell} ${acceptTermsCell}</tr>`;
         return row;
     }).join("\n");
@@ -67,14 +69,13 @@ const isValidEmail = (email) => {
 
 const saveUserform = (event) => {
     event.preventDefault();
+    const userName = document.getElementById('userName').value;
+    const userEmail = document.getElementById('userEmail').value;
+    const userPassword = document.getElementById('userPassword').value;
+    const userDob = document.getElementById('userDob').value;
+    const acceptTerms = document.getElementById('acceptTerms').checked;
 
-    const name = document.getElementById('userName').value;
-    const email = document.getElementById('userEmail').value;
-    const password = document.getElementById('userPassword').value;
-    const dob = document.getElementById('userDob').value;
-    const acceptedTermsAndConditions = document.getElementById('acceptTerms').checked;
-
-    if (!isValidEmail(email)) {
+    if (!isValidEmail(userEmail)) {
         alert("Invalid email address");
         return;
     }
@@ -82,11 +83,11 @@ const saveUserform = (event) => {
     checkAgeValidity();
 
     const entry = {
-        name,
-        email,
-        password,
-        dob,
-        acceptedTermsAndConditions
+        userName,
+        userEmail,
+        userPassword,
+        userDob,
+        acceptTerms
     };
     userentries.push(entry);
 
@@ -94,6 +95,5 @@ const saveUserform = (event) => {
     displayEntries();
 }
 
-let userform = document.getElementById("user-form");
 userform.addEventListener("submit", saveUserform);
 displayEntries();
