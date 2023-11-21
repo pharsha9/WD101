@@ -1,85 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Registration Form</title>
-    <!-- Include Tailwind CSS for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body style="background-color: rgb(39, 39, 210)">
-    <!-- Registration Form Container -->
-    <div class="relative py-8 justify-center">
-        <div class="relative bg-white px-6 pt-5 pb-5 shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
+    <head>
+        <title>Registration Form</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    
+    <body style="background-color: rgb(30, 33, 212)">
+        <div class="relative py-8 justify-center">
+            <div
+            class="relative bg-white px-6 pt-5 pb-5 shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
             <div class="mx-auto -w-md">
-                <!-- Form Header -->
-                <h1 class="text-center font-bold text-4xl">
+                <h1 class="text-center font-bold text-4xl  ">
                     Registration Form
                 </h1>
-
-                <!-- Form Fields -->
                 <div class="divide-y divide-gray-300/50">
                     <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
-                        <!-- User Registration Form -->
                         <form id="user-form">
-                            <!-- Name Input -->
-                            <label for="userName" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
+                            <label for="name" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
                                 Name 
                             </label>
-                            <input required type="text" id="userName" name="userName" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus :invalid:border-pink-500 focus:invalid:ring-pink-500"
+                            <input required type="text" id="name" name="name" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus :invalid:border-pink-500 focus:invalid:ring-pink-500"
                             placeholder="Enter Full Name"></br>
 
-                            <!-- Email Input -->
-                            <label for="userEmail" class="text-md w-40 initial-block font-medium leading-5 text-gray-700">
+                            <label for="email" class="text-md w-40 initial-block font-medium leading-5 text-gray-700">
                                 Email      
                             </label>
-                            <input required type="email" id="userEmail" name="userEmail" style="margin-left:120px" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
+                            <input required type="email" id="email" name="email" style="margin-left:120px" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500" placeholder="Enter Email" ></br>
-
-                            <!-- Password Input -->
-                            <label for="userPassword" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
+                            <label for="password" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
                                 Password
                             </label>
-                            <input required type="password" id="userPassword" name="userPassword" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
+                            <input required type="password" id="password" name="password" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                             placeholder="Enter Password" ></br>
-
-                            <!-- Date of Birth Input -->
-                            <label for="userDob" class="text-md w-40 inline-block font-medium leading-5 text-gray-600">
+                            <label for="dob" class="text-md w-40 inline-block font-medium leading-5 text-gray-600">
                                 Date Of Birth
                             </label>
-                            <input required type="date" id="userDob" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
+                            <input required type="date" id="dob" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500" ></br>
-
-                            <!-- Accept Terms Checkbox -->
                             <label for="acceptTerms"
                             class="text-md w-50 inline-block font-medium leading-5 text-gray-700">
                             Accept Terms & Conditions
                             </label>
                             <input required type="checkbox" id="acceptTerms" name="acceptTerms"
                             class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:placeholder-gray-500"></br>
-
-                            <!-- Submit Button -->
                             <button type="submit"
                             class="w-fit rounded-lg shadow-md px-8 py-4 bg-blue-500 text-white hover:bg-blue-400 focus:outline-none focus:shadow-outline tansition" 
                             onclick="checkAgeValidity()">Submit</button>
-                        </form>
+                           </form>
+                        </div>
                     </div>
-                </div>
+                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- User Entries Display Container -->
-    <div class="relative bg-gray px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-lg sm:px-10">
-        <div class="mx-auto">
-            <!-- Display User Entries Header -->
-            <h2 class="text-3xl text-center font-bold leading-tight"> Entries</h2>
-            <div class="divide-y divide-gray-300/50 py-3" id="user-entries"></div>
+        <div  class="relative bg-gray px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-lg sm:px-10">
+            <div class="mx-auto">
+                <h2 class="text-3xl text-center font-bold leading-tight"> Entries</h2>
+                <div class="divide-y divide-gray-300/50 py-3" id="user-entries"></div>
+
+            </div>
         </div>
-    </div>
-    
-    <!-- Include JavaScript file for additional functionality -->
-    <script src="index.js"></script>
-   
-</body>
+        
+        <script src="index.js"></script>
+       
+    </body>
 </html>
